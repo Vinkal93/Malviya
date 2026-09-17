@@ -30,15 +30,15 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
       highlight: "With Values & Skills",
       flipWords: ["With Values & Skills", "For Tomorrow's World", "With Strong Roots", "To Lead & Succeed"],
       description: "A nurturing campus community dedicated to 100% academic excellence and character building.",
-      image: "/hero-banner-main.png"
+      image: "/hero-banner-3.png"
     }
   ];
 
-  // Auto-slide every 3 seconds with smooth crossfade
+  // Auto-slide every 5 seconds with smooth crossfade
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev % totalSlides) + 1);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [totalSlides]);
@@ -88,13 +88,13 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
             className="relative z-10 max-w-md sm:max-w-lg space-y-2.5 sm:space-y-3.5 my-auto"
           >
             <h1 className="text-2xl sm:text-4xl lg:text-[44px] font-black text-[#0f2444] tracking-tight leading-[1.16]">
-              {current.headline} <br />
-              <span className="text-blue-600 inline-block">
+              <span className="block">{current.headline}</span>
+              <span className="block text-blue-600">
                 <FlipWords 
                   key={`flip-${activeSlide}`}
                   words={current.flipWords || [current.highlight]} 
-                  duration={2500}
-                  className="text-blue-600 font-black px-0 inline-block"
+                  duration={2400}
+                  className="text-blue-600 font-black p-0 m-0 inline-block"
                 />
               </span>
             </h1>
