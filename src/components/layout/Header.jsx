@@ -1,6 +1,16 @@
 import React from 'react';
-import { Search, Menu, Phone, Mail, BookOpen, Sun, Moon, Bell, Sparkles } from 'lucide-react';
+import { Search, Menu, Phone, Mail, BookOpen, Sun, Moon, Bell, Sparkles, GraduationCap, Compass, Trophy, Users, ShieldCheck, HeartHandshake } from 'lucide-react';
 import { schoolConfig } from '../../data/schoolData';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+
 
 export default function Header({ 
   schoolName, 
@@ -118,30 +128,237 @@ export default function Header({
           </div>
         </div>
 
-        {/* Center: Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-700 dark:text-slate-200">
-          <button onClick={() => onNavigate('home')} className="hover:text-blue-600 transition cursor-pointer">
-            Home
-          </button>
-          <button onClick={() => onNavigate('about')} className="hover:text-blue-600 transition cursor-pointer">
-            About Us
-          </button>
-          <button onClick={() => onNavigate('academics')} className="hover:text-blue-600 transition cursor-pointer">
-            Academics
-          </button>
-          <button onClick={() => onNavigate('admissions')} className="hover:text-blue-600 transition cursor-pointer">
-            Admissions
-          </button>
-          <button onClick={() => onNavigate('campus-life')} className="hover:text-blue-600 transition cursor-pointer">
-            Campus Life
-          </button>
-          <button onClick={() => onNavigate('news')} className="hover:text-blue-600 transition cursor-pointer">
-            News & Events
-          </button>
-          <button onClick={() => onNavigate('location-and-tour')} className="hover:text-blue-600 transition cursor-pointer">
-            Virtual Tour
-          </button>
-        </nav>
+        {/* Center: Desktop Navigation Menu with Radix Dropdowns */}
+        <div className="hidden lg:flex items-center">
+          <NavigationMenu>
+            <NavigationMenuList className="gap-1">
+              
+              {/* Home */}
+              <NavigationMenuItem>
+                <button
+                  onClick={() => onNavigate('home')}
+                  className={navigationMenuTriggerStyle()}
+                >
+                  Home
+                </button>
+              </NavigationMenuItem>
+
+              {/* Academics Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Academics</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-4 md:w-[460px] lg:w-[560px] lg:grid-cols-[.85fr_1fr]">
+                    <div className="row-span-3 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 p-5 text-white flex flex-col justify-between shadow-md">
+                      <div>
+                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/20 text-[10px] font-bold uppercase tracking-wider mb-2">
+                          <GraduationCap className="w-3.5 h-3.5" />
+                          <span>CBSE Affiliated</span>
+                        </div>
+                        <h4 className="text-base font-extrabold leading-tight">Academic Excellence</h4>
+                        <p className="text-xs text-blue-100 mt-2 leading-relaxed">
+                          Holistic education focusing on critical thinking, ethical leadership, and continuous innovation.
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => onNavigate('academics')}
+                        className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-300 hover:text-white transition cursor-pointer"
+                      >
+                        Explore Curriculum →
+                      </button>
+                    </div>
+
+                    <ul className="grid gap-1.5">
+                      <li>
+                        <button
+                          onClick={() => onNavigate('academics')}
+                          className="w-full text-left p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                        >
+                          <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                            Primary Wing (Grades 1–5)
+                          </div>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
+                            Activity-based foundational curriculum and values
+                          </p>
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => onNavigate('academics')}
+                          className="w-full text-left p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                        >
+                          <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                            Middle Wing (Grades 6–8)
+                          </div>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
+                            Experiential STEM labs, coding, and inquiry methods
+                          </p>
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => onNavigate('academics')}
+                          className="w-full text-left p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                        >
+                          <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                            Senior Secondary (Grades 9–12)
+                          </div>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
+                            Science, Commerce & Humanities streams with CBSE
+                          </p>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Admissions Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Admissions</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[380px] gap-2 p-4 md:w-[480px] md:grid-cols-2">
+                    <li>
+                      <button
+                        onClick={() => onNavigate('admissions')}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                      >
+                        <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                          Session 2026–27
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2">
+                          Step-by-step admission guidelines and important dates.
+                        </p>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => onNavigate('admissions')}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                      >
+                        <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                          Fee Structure
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2">
+                          Transparent quarterly fee breakdown and scholarships.
+                        </p>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => onNavigate('admissions')}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                      >
+                        <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                          Eligibility Criteria
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2">
+                          Age criteria and documents required for registration.
+                        </p>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={onOpenAdmission}
+                        className="w-full text-left p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition group cursor-pointer border border-blue-200 dark:border-blue-800/80"
+                      >
+                        <div className="text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1">
+                          <span>Apply Online Now</span>
+                          <span>→</span>
+                        </div>
+                        <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 line-clamp-2">
+                          Direct online admission registration portal.
+                        </p>
+                      </button>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Campus Life Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Campus Life</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[360px] gap-2 p-4 md:w-[440px] md:grid-cols-2">
+                    <li>
+                      <button
+                        onClick={() => onNavigate('campus-life')}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                      >
+                        <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600">
+                          Sports & Athletics
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                          Cricket, basketball, badminton, yoga and athletics.
+                        </p>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => onNavigate('campus-life')}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                      >
+                        <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600">
+                          Robotics & STEM
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                          Hands-on AI, robotics, and high-tech computer labs.
+                        </p>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => onNavigate('location-and-tour')}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                      >
+                        <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600">
+                          360° Campus Tour
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                          Interactive virtual walk through classes and labs.
+                        </p>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => onNavigate('about')}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group cursor-pointer"
+                      >
+                        <div className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600">
+                          Safe Environment
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                          CCTV surveillance, GPS bus tracking & infirmary.
+                        </p>
+                      </button>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* News & Notices */}
+              <NavigationMenuItem>
+                <button
+                  onClick={() => onNavigate('news')}
+                  className={navigationMenuTriggerStyle()}
+                >
+                  News & Events
+                </button>
+              </NavigationMenuItem>
+
+              {/* Virtual Tour */}
+              <NavigationMenuItem>
+                <button
+                  onClick={() => onNavigate('location-and-tour')}
+                  className={navigationMenuTriggerStyle()}
+                >
+                  Virtual Tour
+                </button>
+              </NavigationMenuItem>
+
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+
 
         {/* Right Actions: Theme Toggle, Search & APPLY NOW (on Main Page as requested) */}
         <div className="flex items-center space-x-2 sm:space-x-3">
