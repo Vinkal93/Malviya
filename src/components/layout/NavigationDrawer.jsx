@@ -77,8 +77,8 @@ export default function NavigationDrawer({
         className="absolute inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity duration-300" 
       />
 
-      {/* Slide Drawer from LEFT SIDE */}
-      <div className="absolute inset-y-0 left-0 max-w-[340px] sm:max-w-[370px] w-full bg-white dark:bg-slate-900 shadow-2xl flex flex-col z-10 animate-slideRight transition-colors">
+      {/* Slide Drawer from RIGHT SIDE (matching right hamburger menu) */}
+      <div className="absolute inset-y-0 right-0 max-w-[340px] sm:max-w-[370px] w-full bg-white dark:bg-slate-900 shadow-2xl flex flex-col z-10 animate-slideInRight transition-colors">
         
         {/* 1. Header with Logo, Theme Toggle & Close button */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-white dark:bg-slate-900">

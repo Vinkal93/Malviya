@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 
 export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
@@ -11,14 +11,14 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
       headline: "A Brighter Tomorrow",
       highlight: "Begins Here",
       description: "Quality education, strong values and a supportive environment for every child to grow and succeed.",
-      image: "/hero-campus.jpg"
+      image: "/hero-banner-main.png"
     },
     {
       badge: "Modern Infrastructure • Smart Learning",
       headline: "Nurturing Curious Minds",
       highlight: "For Future Leaders",
       description: "Advanced STEM innovation labs, robotics, comprehensive athletics, and holistic cultural development.",
-      image: "/hero-campus.jpg"
+      image: "/hero-banner-classroom.png"
     },
     {
       badge: "Admissions Open 2026–27",
@@ -35,15 +35,17 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
     <section className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 pt-3 sm:pt-4 pb-4 sm:pb-6">
       <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-[54vh] sm:h-[62vh] min-h-[400px] sm:min-h-[460px] max-h-[560px] border border-slate-200/80 shadow-sm flex flex-col justify-between p-5 sm:p-8 lg:p-12">
         
-        {/* Photographic Campus Background */}
-        <img
-          src={current.image}
-          alt="Malviya Public School Campus"
-          className="absolute inset-0 w-full h-full object-cover object-center select-none"
-        />
+        {/* Photographic Campus Background with Smooth Panoramic Pan on Mobile */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={current.image}
+            alt="Malviya Public School Campus"
+            className="w-full h-full object-cover object-left sm:object-center min-w-[165%] sm:min-w-full animate-panorama sm:animate-none select-none"
+          />
+        </div>
 
         {/* Gentle Readability Overlay (Left light gradient) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/20 sm:to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/10 sm:to-transparent pointer-events-none max-w-xl" />
 
         {/* Top: Minimal Subtle Affiliation Pill */}
         <div className="relative z-10">

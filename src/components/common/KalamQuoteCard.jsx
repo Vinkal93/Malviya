@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Quote } from 'lucide-react';
 
 export default function KalamQuoteCard() {
@@ -25,9 +25,9 @@ export default function KalamQuoteCard() {
         {/* Portrait */}
         <div className="flex-shrink-0">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/A._P._J._Abdul_Kalam.jpg/480px-A._P._J._Abdul_Kalam.jpg"
+            src="/kalam.jpg"
             alt="Dr. A.P.J. Abdul Kalam"
-            className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover object-top border border-blue-600/20 shadow-2xs"
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover object-top border-2 border-blue-600/20 shadow-2xs"
           />
         </div>
 

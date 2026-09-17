@@ -13,6 +13,20 @@ export default function PageModal({ pageId, onClose, onOpenAdmission, onOpenEnqu
       case 'about':
         return (
           <div className="space-y-6">
+            {/* Campus Image Header */}
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xs h-44 sm:h-56 bg-slate-100">
+              <img
+                src="/hero-banner-main.png"
+                alt="Malviya Public School Campus"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent flex flex-col justify-end p-4 text-white">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-amber-300">Campus & Excellence</span>
+                <h4 className="text-base sm:text-lg font-black leading-tight text-white drop-shadow-sm">Malviya Public School</h4>
+                <p className="text-xs text-white/80 font-medium">{schoolConfig.address}</p>
+              </div>
+            </div>
+
             <div className="flex items-center space-x-4 p-4 rounded-2xl bg-blue-50/70 border border-blue-100">
               <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
                 <Landmark className="w-6 h-6" />

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Menu, Phone, BookOpen, GraduationCap } from 'lucide-react';
 import { schoolConfig } from '../../data/schoolData';
 import {
@@ -57,19 +57,8 @@ export default function Header({
       {/* 2. Main Clean White Navigation Bar */}
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 h-15 sm:h-18 flex items-center justify-between">
         
-        {/* Left: Hamburger Menu + School Crest + Name */}
-        <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
-          
-          {/* Mobile/Tablet Menu Button */}
-          <button
-            onClick={onOpenDrawer}
-            aria-label="Open navigation menu"
-            className="p-1.5 -ml-1 text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition active:scale-95 cursor-pointer flex-shrink-0"
-          >
-            <Menu className="w-6 h-6 stroke-[2]" />
-          </button>
-
-          {/* School Brand (Crest + Title + Affiliation) */}
+        {/* Left: School Crest + Name + Affiliation */}
+        <div className="flex items-center min-w-0">
           <div 
             onClick={() => onNavigate('home')}
             className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none group min-w-0"
@@ -281,14 +270,23 @@ export default function Header({
           </NavigationMenu>
         </div>
 
-        {/* Right: Only the Clean, Elegant Apply Button (Zero Visual Competition) */}
-        <div className="flex items-center flex-shrink-0">
+        {/* Right: Apply Button + Hamburger Menu Button */}
+        <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
           <button
             onClick={onOpenAdmission}
-            className="px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs sm:text-sm font-bold shadow-xs transition cursor-pointer flex items-center space-x-1.5"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs sm:text-sm font-bold shadow-xs transition cursor-pointer flex items-center space-x-1.5"
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Apply Now</span>
+            <span>Apply</span>
+          </button>
+
+          {/* Hamburger Menu on Right Side */}
+          <button
+            onClick={onOpenDrawer}
+            aria-label="Open navigation menu"
+            className="p-1.5 sm:p-2 text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg sm:rounded-xl transition active:scale-95 cursor-pointer border border-slate-200/80 sm:border-0"
+          >
+            <Menu className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]" />
           </button>
         </div>
 
