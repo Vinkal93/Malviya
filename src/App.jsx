@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import FloatingDock from './components/layout/FloatingDock';
 import NavigationDrawer from './components/layout/NavigationDrawer';
 
 import HeroSection from './components/hero/HeroSection';
@@ -188,7 +187,7 @@ export default function App() {
       />
 
       {/* Main Content Flow */}
-      <main className="flex-1 w-full pb-28 sm:pb-32 overflow-x-hidden">
+      <main className="flex-1 w-full overflow-x-hidden">
         
         {/* 2. Hero Section with Background Photo & Overlaid Content */}
         <HeroSection
@@ -270,13 +269,7 @@ export default function App() {
       {/* 15. Light Mode Footer with Social Links */}
       <Footer schoolName={activeSchoolName} onNavigate={handleNavigate} />
 
-      {/* 16. FLOATING DOCK */}
-      <FloatingDock
-        onNavigate={handleNavigate}
-        onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
-      />
-
-      {/* 17. Navigation Drawer (Left-Side) */}
+      {/* 16. Navigation Drawer (Left-Side) */}
       <NavigationDrawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
