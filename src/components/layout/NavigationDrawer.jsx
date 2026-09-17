@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SocialIcon } from 'react-social-icons';
 import { 
   X, ChevronRight, ChevronDown, Phone, Mail, Search,
   Home, Landmark, BookOpen, FileText, Users, Calendar, 
@@ -391,18 +392,13 @@ export default function NavigationDrawer({
 
         {/* 4. Footer: Social Icons (pointing to #), Contact Details & Sprout Tagline */}
         <div className="p-4 bg-slate-50 dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 space-y-3">
-          {/* Social Icons Row */}
-          <div className="flex items-center justify-center space-x-2.5">
-            {socialLinks.map((item, idx) => (
-              <a 
-                key={idx} 
-                href={item.href} 
-                aria-label={item.name}
-                className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shadow-2xs hover:opacity-90 transition ${item.bg}`}
-              >
-                {item.label}
-              </a>
-            ))}
+          {/* Social Icons Row using react-social-icons */}
+          <div className="flex items-center justify-center space-x-2">
+            <SocialIcon url="https://facebook.com" style={{ height: 30, width: 30 }} className="hover:scale-110 transition-transform shadow-2xs" />
+            <SocialIcon url="https://instagram.com" style={{ height: 30, width: 30 }} className="hover:scale-110 transition-transform shadow-2xs" />
+            <SocialIcon url="https://youtube.com" style={{ height: 30, width: 30 }} className="hover:scale-110 transition-transform shadow-2xs" />
+            <SocialIcon url="https://linkedin.com" style={{ height: 30, width: 30 }} className="hover:scale-110 transition-transform shadow-2xs" />
+            <SocialIcon url="https://twitter.com" style={{ height: 30, width: 30 }} className="hover:scale-110 transition-transform shadow-2xs" />
           </div>
 
           {/* Contact Details */}

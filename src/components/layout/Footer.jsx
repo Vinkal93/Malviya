@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUp, MapPin, Phone, Mail, Clock, Award } from 'lucide-react';
+import { ArrowUp, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { SocialIcon } from 'react-social-icons';
 import { schoolConfig } from '../../data/schoolData';
 
 export default function Footer({ schoolName, onNavigate }) {
@@ -7,16 +8,8 @@ export default function Footer({ schoolName, onNavigate }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const socialLinks = [
-    { name: "Facebook", label: "f", href: "#", color: "hover:bg-blue-600 hover:text-white" },
-    { name: "Instagram", label: "IG", href: "#", color: "hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-600 hover:to-purple-600 hover:text-white" },
-    { name: "YouTube", label: "YT", href: "#", color: "hover:bg-red-600 hover:text-white" },
-    { name: "LinkedIn", label: "in", href: "#", color: "hover:bg-sky-700 hover:text-white" },
-    { name: "X", label: "𝕏", href: "#", color: "hover:bg-black hover:text-white" },
-  ];
-
   return (
-    <footer className="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 pt-14 pb-14 border-t border-slate-200/90 dark:border-slate-800 transition-colors relative">
+    <footer className="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 pt-14 pb-20 border-t border-slate-200/90 dark:border-slate-800 transition-colors relative">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         
         {/* Main Footer Grid */}
@@ -53,22 +46,17 @@ export default function Footer({ schoolName, onNavigate }) {
               Committed to holistic child development, academic excellence, moral integrity and technological innovation. Affiliated with the Central Board of Secondary Education (CBSE), New Delhi.
             </p>
 
-            {/* Social Media Icons (All redirect to #) */}
+            {/* Social Media Icons via react-social-icons */}
             <div className="pt-2">
-              <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider">
+              <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-2.5 uppercase tracking-wider">
                 Follow Our Channels
               </p>
-              <div className="flex items-center space-x-2">
-                {socialLinks.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.href}
-                    aria-label={item.name}
-                    className={`w-8 h-8 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-xs font-bold shadow-2xs transition-all duration-200 ${item.color}`}
-                  >
-                    <span>{item.label}</span>
-                  </a>
-                ))}
+              <div className="flex items-center space-x-2.5">
+                <SocialIcon url="https://facebook.com" style={{ height: 34, width: 34 }} className="hover:scale-110 transition-transform shadow-2xs" />
+                <SocialIcon url="https://instagram.com" style={{ height: 34, width: 34 }} className="hover:scale-110 transition-transform shadow-2xs" />
+                <SocialIcon url="https://youtube.com" style={{ height: 34, width: 34 }} className="hover:scale-110 transition-transform shadow-2xs" />
+                <SocialIcon url="https://linkedin.com" style={{ height: 34, width: 34 }} className="hover:scale-110 transition-transform shadow-2xs" />
+                <SocialIcon url="https://twitter.com" style={{ height: 34, width: 34 }} className="hover:scale-110 transition-transform shadow-2xs" />
               </div>
             </div>
           </div>
