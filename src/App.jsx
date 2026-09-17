@@ -69,6 +69,62 @@ export default function App() {
   // Detail Modal for quick action clicks
   const [detailModalData, setDetailModalData] = useState(null);
 
+  // Prevent background page from scrolling when any modal, popup or drawer is open on mobile/desktop
+  useEffect(() => {
+    const isAnyModalOpen = Boolean(
+      isDrawerOpen ||
+      activePageId ||
+      isSearchOpen ||
+      isEnquireOpen ||
+      isAdmissionOpen ||
+      isVideoOpen ||
+      isVirtualTourOpen ||
+      isBrochureOpen ||
+      isPrincipalOpen ||
+      detailModalData
+    );
+
+    if (isAnyModalOpen) {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const originalOverflow = document.body.style.overflow;
+      const originalPosition = document.body.style.position;
+      const originalTop = document.body.style.top;
+      const originalWidth = document.body.style.width;
+
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+
+      return () => {
+        const top = document.body.style.top;
+        document.body.style.position = originalPosition;
+        document.body.style.top = originalTop;
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = originalWidth;
+        document.body.style.overflow = originalOverflow;
+        if (top) {
+          const restoreY = Math.abs(parseInt(top, 10)) || 0;
+          window.scrollTo(0, restoreY);
+        }
+      };
+    }
+  }, [
+    isDrawerOpen,
+    activePageId,
+    isSearchOpen,
+    isEnquireOpen,
+    isAdmissionOpen,
+    isVideoOpen,
+    isVirtualTourOpen,
+    isBrochureOpen,
+    isPrincipalOpen,
+    detailModalData
+  ]);
+
   const scrollToSection = (sectionId) => {
     const el = document.getElementById(sectionId);
     if (el) {

@@ -7,7 +7,7 @@ export const schoolConfig = {
   heroBadge: "Better Students, Brighter India",
   affiliation: "CBSE Affiliated",
   affiliationCode: "Affiliation No. 2133456",
-  address: "Utraithe Bazar, Ambedkar Nagar, Uttar Pradesh, India - 224122",
+  address: "Utrethoo Bazar, Ambedkar Nagar, Uttar Pradesh, India - 224122",
   locationName: "Utrethoo Bazar, Ambedkar Nagar",
   phone: "+91 9118245636",
   altPhone: "+91 9118245636",

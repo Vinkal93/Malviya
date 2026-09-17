@@ -35,12 +35,12 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
     <section className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 pt-3 sm:pt-4 pb-4 sm:pb-6">
       <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-[54vh] sm:h-[62vh] min-h-[400px] sm:min-h-[460px] max-h-[560px] border border-slate-200/80 shadow-sm flex flex-col justify-between p-5 sm:p-8 lg:p-12">
         
-        {/* Photographic Campus Background with Smooth Panoramic Pan on Mobile */}
-        <div className="absolute inset-0 overflow-hidden">
+        {/* Photographic Campus Background with Smooth Panoramic Pan on Mobile & Edge-to-Edge Desktop Coverage */}
+        <div className="absolute inset-0 overflow-hidden bg-slate-900">
           <img
             src={current.image}
             alt="Malviya Public School Campus"
-            className="w-full h-full object-cover object-left sm:object-center min-w-[165%] sm:min-w-full animate-panorama sm:animate-none select-none"
+            className="hero-banner-img select-none"
           />
         </div>
 
@@ -85,22 +85,27 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
           </div>
         </div>
 
-        {/* Bottom: Minimal Pagination Dots */}
-        <div className="relative z-10 flex items-center space-x-1.5 pt-2">
-          {slides.map((_, idx) => {
-            const slideNum = idx + 1;
-            const isActive = activeSlide === slideNum;
-            return (
-              <button
-                key={slideNum}
-                onClick={() => setActiveSlide(slideNum)}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  isActive ? "w-6 bg-blue-600" : "w-1.5 bg-slate-300 hover:bg-slate-400"
-                }`}
-                aria-label={`Go to slide ${slideNum}`}
-              />
-            );
-          })}
+        {/* Bottom: Minimal Pagination Dots with subtle glass pill */}
+        <div className="relative z-10 flex items-center pt-2">
+          <div className="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200/70 shadow-2xs">
+            {slides.map((_, idx) => {
+              const slideNum = idx + 1;
+              const isActive = activeSlide === slideNum;
+              return (
+                <button
+                  key={slideNum}
+                  onClick={() => setActiveSlide(slideNum)}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    isActive ? "w-6 bg-blue-600" : "w-2 bg-slate-300 hover:bg-slate-400"
+                  }`}
+                  aria-label={`Go to slide ${slideNum}`}
+                />
+              );
+            })}
+            <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 pl-1 border-l border-slate-200 ml-1">
+              0{activeSlide} <span className="text-slate-400 font-normal">/ 0{totalSlides}</span>
+            </span>
+          </div>
         </div>
 
       </div>

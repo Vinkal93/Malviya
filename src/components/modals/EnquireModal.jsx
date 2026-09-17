@@ -35,9 +35,9 @@ export default function EnquireModal({ isOpen, onClose, schoolName }) {
         className="absolute inset-0 bg-slate-950/60 backdrop-blur-xs transition-opacity" 
       />
 
-      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 animate-scaleUp">
+      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 animate-scaleUp max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="p-4 bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white flex items-center justify-between">
+        <div className="p-4 bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white flex items-center justify-between flex-shrink-0">
           <div>
             <h3 className="font-extrabold text-base">Quick Admission Enquiry</h3>
             <p className="text-xs text-blue-200 mt-0.5">{schoolName} • Session 2026–27</p>
@@ -62,7 +62,7 @@ export default function EnquireModal({ isOpen, onClose, schoolName }) {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-5 space-y-3">
+          <form onSubmit={handleSubmit} className="p-5 space-y-3 overflow-y-auto overscroll-contain modal-scroll flex-1">
             <div>
               <label className="text-[11px] font-bold text-slate-700 block mb-1">
                 Parent / Guardian Name *

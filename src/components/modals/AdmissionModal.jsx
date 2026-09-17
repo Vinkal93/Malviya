@@ -57,7 +57,7 @@ export default function AdmissionModal({ isOpen, onClose, schoolName }) {
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-5">
+        <div className="flex-1 overflow-y-auto overscroll-contain modal-scroll p-5">
           {submitted ? (
             <div className="py-12 text-center space-y-3">
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">

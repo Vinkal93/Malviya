@@ -11,9 +11,9 @@ export default function DetailModal({ isOpen, onClose, detailData, onActionClick
         className="absolute inset-0 bg-slate-950/65 backdrop-blur-xs" 
       />
 
-      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 animate-scaleUp">
+      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 animate-scaleUp max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="p-4 bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex items-center justify-between">
+        <div className="p-4 bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex items-center justify-between flex-shrink-0">
           <h3 className="font-extrabold text-sm">{detailData.title}</h3>
           <button
             onClick={onClose}
@@ -23,19 +23,21 @@ export default function DetailModal({ isOpen, onClose, detailData, onActionClick
           </button>
         </div>
 
-        {/* Content Image if present */}
-        {detailData.image && (
-          <div className="h-44 w-full overflow-hidden bg-slate-100">
-            <img
-              src={detailData.image}
-              alt={detailData.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
+        {/* Scrollable Container */}
+        <div className="overflow-y-auto overscroll-contain modal-scroll flex-1">
+          {/* Content Image if present */}
+          {detailData.image && (
+            <div className="h-44 w-full overflow-hidden bg-slate-100">
+              <img
+                src={detailData.image}
+                alt={detailData.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
 
-        {/* Body Content */}
-        <div className="p-5 space-y-3">
+          {/* Body Content */}
+          <div className="p-5 space-y-3">
           {detailData.tag && (
             <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px] border border-blue-100">
               {detailData.tag}
@@ -69,6 +71,7 @@ export default function DetailModal({ isOpen, onClose, detailData, onActionClick
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           )}
+          </div>
         </div>
       </div>
     </div>

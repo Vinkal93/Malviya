@@ -29,7 +29,7 @@ export default function PrincipalModal({ isOpen, onClose, schoolName }) {
         </div>
 
         {/* Body */}
-        <div className="p-5 overflow-y-auto space-y-4">
+        <div className="p-5 overflow-y-auto overscroll-contain modal-scroll space-y-4">
           <div className="flex items-center space-x-3.5 pb-3 border-b border-slate-100">
             <img
               src={principal.image}

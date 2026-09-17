@@ -88,6 +88,15 @@
   scrollbar-width: none;
 }
 
+/* Modal and drawer mobile scroll containment */
+.modal-scroll {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-y !important;
+}
+
+
 /* Bold typography enhancements on mobile and desktop */
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
@@ -123,6 +132,27 @@ h1, h2, h3, h4, h5, h6 {
   animation: panoramaPan 20s ease-in-out infinite alternate;
   will-change: transform;
 }
+
+/* Hero Banner Image full coverage and mobile panorama */
+.hero-banner-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+@media (max-width: 640px) {
+  .hero-banner-img {
+    width: 175% !important;
+    min-width: 175% !important;
+    max-width: none !important;
+    object-position: left center !important;
+    animation: panoramaPan 22s ease-in-out infinite alternate !important;
+    will-change: transform;
+  }
+}
+
 
 /* Slide in from right animation for mobile drawer */
 @keyframes slideInRight {

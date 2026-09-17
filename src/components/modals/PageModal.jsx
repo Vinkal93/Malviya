@@ -314,7 +314,7 @@ export default function PageModal({ pageId, onClose, onOpenAdmission, onOpenEnqu
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-6">
+        <div className="flex-1 overflow-y-auto overscroll-contain modal-scroll p-5 sm:p-6">
           {renderContent()}
         </div>
       </div>

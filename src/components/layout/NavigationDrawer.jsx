@@ -138,7 +138,7 @@ export default function NavigationDrawer({
         </div>
 
         {/* 3. Navigation List */}
-        <div className="flex-1 overflow-y-auto p-3 space-y-1">
+        <div className="flex-1 overflow-y-auto overscroll-contain modal-scroll p-3 space-y-1">
           
           {/* HOME */}
           <button
