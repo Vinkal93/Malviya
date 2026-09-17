@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
+import { FlipWords } from '../ui/flip-words';
 
 export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
   const [activeSlide, setActiveSlide] = useState(1);
@@ -10,6 +11,7 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
       badge: "CBSE Affiliated • Nursery to Grade 12",
       headline: "A Brighter Tomorrow",
       highlight: "Begins Here",
+      flipWords: ["Begins Here", "Starts Today", "Shapes Leaders", "Inspires Excellence", "Nurtures Values"],
       description: "Quality education, strong values and a supportive environment for every child to grow and succeed.",
       image: "/hero-banner-main.png"
     },
@@ -17,6 +19,7 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
       badge: "Modern Infrastructure • Smart Learning",
       headline: "Nurturing Curious Minds",
       highlight: "For Future Leaders",
+      flipWords: ["For Future Leaders", "Through STEM & AI", "With Creative Arts", "For Global Success"],
       description: "Advanced STEM innovation labs, robotics, comprehensive athletics, and holistic cultural development.",
       image: "/hero-banner-classroom.png"
     },
@@ -24,6 +27,7 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
       badge: "Admissions Open 2026–27",
       headline: "Empowering Students",
       highlight: "With Values & Skills",
+      flipWords: ["With Values & Skills", "For Tomorrow's World", "With Strong Roots", "To Lead & Succeed"],
       description: "A nurturing campus community dedicated to 100% academic excellence and character building.",
       image: "/hero-campus.jpg"
     }
@@ -58,7 +62,14 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
         <div className="relative z-10 max-w-md sm:max-w-lg space-y-2.5 sm:space-y-3.5 my-auto">
           <h1 className="text-2xl sm:text-4xl lg:text-[44px] font-black text-[#0f2444] tracking-tight leading-[1.16]">
             {current.headline} <br />
-            <span className="text-blue-600">{current.highlight}</span>
+            <span className="text-blue-600 inline-block">
+              <FlipWords 
+                key={activeSlide}
+                words={current.flipWords || [current.highlight]} 
+                duration={2800}
+                className="text-blue-600 font-black px-0 inline-block"
+              />
+            </span>
           </h1>
 
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium line-clamp-2">
