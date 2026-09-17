@@ -1,67 +1,53 @@
 import React from 'react';
-import { GraduationCap, Users, ShieldCheck, Lightbulb } from 'lucide-react';
-import { whyChooseUsFeatures } from '../../data/schoolData';
-
-const iconMap = {
-  GraduationCap: GraduationCap,
-  Users: Users,
-  ShieldCheck: ShieldCheck,
-  Lightbulb: Lightbulb
-};
+import { GraduationCap, Users, ShieldCheck, Trophy } from 'lucide-react';
 
 export default function WhyChooseUs() {
-  return (
-    <section className="py-16 bg-slate-50/50" id="about">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Title with decorative accent */}
-        <div className="text-center space-y-2 mb-12">
-          <div className="inline-block relative">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-950 tracking-tight">
-              Why Choose Us?
-            </h3>
-            {/* Curved underline */}
-            <svg
-              viewBox="0 0 140 14"
-              fill="none"
-              className="w-32 sm:w-40 mx-auto mt-1 text-blue-600"
-            >
-              <path
-                d="M3 10C40 2 100 2 137 10"
-                stroke="currentColor"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-          <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto leading-relaxed">
-            A nurturing environment where every child learns, explores and grows beyond limits.
-          </p>
-        </div>
+  const pillars = [
+    {
+      id: 1,
+      title: "Academic Excellence",
+      icon: GraduationCap,
+      color: "text-blue-600 bg-blue-50/80 dark:bg-blue-950/60",
+    },
+    {
+      id: 2,
+      title: "Holistic Development",
+      icon: Users,
+      color: "text-emerald-600 bg-emerald-50/80 dark:bg-emerald-950/60",
+    },
+    {
+      id: 3,
+      title: "Safe & Caring Environment",
+      icon: ShieldCheck,
+      color: "text-sky-600 bg-sky-50/80 dark:bg-sky-950/60",
+    },
+    {
+      id: 4,
+      title: "Co-Curricular Opportunities",
+      icon: Trophy,
+      color: "text-amber-500 bg-amber-50/80 dark:bg-amber-950/60",
+    },
+  ];
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {whyChooseUsFeatures.map((item) => {
-            const Icon = iconMap[item.icon] || GraduationCap;
-            return (
-              <div
-                key={item.id}
-                className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className={`w-14 h-14 rounded-2xl ${item.bgColor} flex items-center justify-center mb-5 shadow-2xs`}>
-                    <Icon className={`w-7 h-7 ${item.color} stroke-[2.2]`} />
-                  </div>
-                  <h4 className="text-lg font-black text-slate-900 leading-snug mb-2">
-                    {item.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+  return (
+    <section className="px-3 sm:px-6 py-4 max-w-7xl mx-auto" id="about">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        {pillars.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.id}
+              className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-slate-100 dark:border-slate-800 shadow-2xs hover:shadow-md transition-all flex flex-col items-center text-center justify-center cursor-pointer group"
+            >
+              <div className={`w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center mb-3 group-hover:scale-105 transition-transform shadow-2xs`}>
+                <Icon className="w-6 h-6 stroke-[2.2]" />
               </div>
-            );
-          })}
-        </div>
+              <h4 className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100 leading-snug">
+                {item.title}
+              </h4>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

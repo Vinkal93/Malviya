@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, GraduationCap, Award, ShieldCheck } from 'lucide-react';
+import { Users, Presentation, BookOpen, Star } from 'lucide-react';
 import NumberTicker from '../common/NumberTicker';
 
 export default function StatsCard() {
@@ -18,60 +18,57 @@ export default function StatsCard() {
       numericValue: 50,
       suffix: "+",
       label: "Expert Faculty",
-      icon: GraduationCap,
+      icon: Presentation,
     },
     {
       id: 3,
-      isNumeric: false,
-      textValue: "CBSE",
-      label: "Affiliated School",
-      icon: Award,
+      isNumeric: true,
+      numericValue: 100,
+      suffix: "%",
+      label: "CBSE Curriculum",
+      icon: BookOpen,
     },
     {
       id: 4,
       isNumeric: true,
       numericValue: 25,
       suffix: "+",
-      label: "Years of Trust",
-      icon: ShieldCheck,
+      label: "Co-Curricular Programs",
+      icon: Star,
     },
   ];
 
   return (
-    <div className="w-full bg-white rounded-2xl sm:rounded-3xl border border-slate-200/70 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06)] px-4 py-4 sm:px-6 sm:py-5">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
-        {stats.map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <div
-              key={item.id}
-              className={`flex items-center space-x-3.5 ${
-                index > 0 ? 'pt-3 sm:pt-0 sm:pl-6' : ''
-              }`}
-            >
-              <div className="w-10 h-10 rounded-xl bg-blue-50/80 text-blue-600 flex items-center justify-center flex-shrink-0">
-                <Icon className="w-5 h-5 stroke-[2]" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-none">
-                  {item.isNumeric ? (
-                    <NumberTicker
-                      value={item.numericValue}
-                      suffix={item.suffix}
-                      duration={1800}
-                    />
-                  ) : (
-                    item.textValue
-                  )}
+    <section className="px-3 sm:px-6 py-3 max-w-7xl mx-auto">
+      <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 p-5 sm:p-7 text-white shadow-xl shadow-blue-950/15 border border-blue-800/40">
+        
+        {/* Subtle background building watermark */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+        <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+          {stats.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div key={item.id} className="flex flex-col items-center justify-center p-2">
+                <div className="w-10 h-10 rounded-xl bg-white/10 text-blue-300 flex items-center justify-center mb-2 shadow-2xs border border-white/10">
+                  <Icon className="w-5 h-5 stroke-[2.2]" />
                 </div>
-                <div className="text-xs text-slate-500 font-medium mt-1 truncate">
+                <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight leading-tight">
+                  <NumberTicker
+                    value={item.numericValue}
+                    suffix={item.suffix}
+                    duration={1800}
+                  />
+                </span>
+                <span className="text-[11px] sm:text-xs text-blue-200/90 font-medium mt-1 leading-tight">
                   {item.label}
-                </div>
+                </span>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 }

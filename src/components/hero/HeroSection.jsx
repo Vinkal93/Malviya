@@ -1,60 +1,91 @@
-import React from 'react';
-import { ArrowRight, Play, Users, GraduationCap, Award, Star } from 'lucide-react';
-import NumberTicker from '../common/NumberTicker';
+import React, { useState } from 'react';
+import { ArrowRight, Play, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
+  const [activeSlide, setActiveSlide] = useState(1);
+  const totalSlides = 3;
+
+  const nextSlide = () => {
+    setActiveSlide(prev => prev < totalSlides ? prev + 1 : 1);
+  };
+
+  const prevSlide = () => {
+    setActiveSlide(prev => prev > 1 ? prev - 1 : totalSlides);
+  };
+
   return (
-    <section className="px-3 sm:px-6 pt-3 pb-8 max-w-7xl mx-auto">
+    <section className="px-3 sm:px-6 pt-3 pb-6 max-w-7xl mx-auto">
       
-      {/* 1. Main Rounded Hero Card (Exact replica of mobile reference) */}
-      <div className="relative rounded-[32px] sm:rounded-[40px] overflow-hidden bg-gradient-to-b from-[#dbeafe] via-[#eff6ff] to-[#f8fafc] border border-blue-100/60 shadow-sm pt-6 sm:pt-10 px-5 sm:px-10 pb-48 sm:pb-64 md:pb-72">
+      {/* Main Hero Card with Photographic Background & Overlaid Text */}
+      <div className="relative rounded-[32px] sm:rounded-[40px] overflow-hidden min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] shadow-lg border border-slate-200/60 dark:border-slate-800 flex flex-col justify-between p-5 sm:p-8 lg:p-12">
         
-        {/* Top Right "Better Students Brighter India" Ribbon */}
-        <div className="absolute top-5 sm:top-8 right-4 sm:right-8 z-20">
-          <div className="flex flex-col items-center select-none rotate-2">
-            <span className="font-['Caveat'] text-lg sm:text-2xl font-bold text-slate-800 tracking-wide text-center leading-tight">
+        {/* Full Background Photographic Campus Image */}
+        <img
+          src="/hero-campus.jpg"
+          alt="Malviya Public School Campus and Students"
+          className="absolute inset-0 w-full h-full object-cover object-center select-none"
+        />
+
+        {/* Soft Left Light Gradient Overlay to make text 100% crisp and readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/10 dark:from-slate-950/95 dark:via-slate-950/80 dark:to-slate-950/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+
+        {/* Top Badges Row */}
+        <div className="relative z-10 flex items-start justify-between w-full">
+          
+          {/* Left Pill: CBSE Affiliated | Nurturing Future Leaders */}
+          <div className="inline-flex items-center space-x-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-xs border border-white/60 dark:border-slate-800 text-[11px] sm:text-xs font-bold text-slate-800 dark:text-slate-100">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 fill-emerald-100 dark:fill-emerald-950" />
+            <span className="text-emerald-700 dark:text-emerald-400 font-extrabold">CBSE Affiliated</span>
+            <span className="text-slate-300 dark:text-slate-600">|</span>
+            <span className="font-semibold text-slate-600 dark:text-slate-300 hidden sm:inline">Nurturing Future Leaders</span>
+            <span className="font-semibold text-slate-600 dark:text-slate-300 sm:hidden">Future Leaders</span>
+          </div>
+
+          {/* Right: "Better Students Brighter India" Badge */}
+          <div className="flex flex-col items-center select-none rotate-1 sm:rotate-2">
+            <span className="font-['Caveat'] text-base sm:text-xl font-bold text-slate-900 dark:text-white tracking-wide text-center leading-tight drop-shadow-xs">
               Better <br />
               Students <br />
               Brighter <br />
               India
             </span>
-            {/* Tricolor wave underline */}
-            <svg viewBox="0 0 60 8" fill="none" className="w-14 sm:w-16 mt-0.5">
-              <path d="M2 3C18 7 42 1 58 5" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
-              <path d="M2 5C18 9 42 3 58 7" stroke="#16a34a" strokeWidth="1.8" strokeLinecap="round" />
+            <svg viewBox="0 0 60 8" fill="none" className="w-12 sm:w-16 mt-0.5">
+              <path d="M2 3C18 7 42 1 58 5" stroke="#f97316" strokeWidth="2.2" strokeLinecap="round" />
+              <path d="M2 5C18 9 42 3 58 7" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </div>
+
         </div>
 
-        {/* Hero Content (Headline, Subtext & Action Buttons) */}
-        <div className="relative z-20 max-w-md lg:max-w-xl text-left space-y-3.5 sm:space-y-5">
-          {/* Headline */}
-          <h1 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-[#0f2444] tracking-tight leading-[1.12]">
-            Shaping <br />
-            Bright Minds <br />
-            for a <span className="text-blue-600">Better<br />Tomorrow</span>
+        {/* Overlaid Headline, Subtext & CTA Buttons */}
+        <div className="relative z-10 max-w-lg lg:max-w-xl text-left space-y-4 sm:space-y-5 my-auto py-6">
+          
+          {/* Main Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black text-[#0f2444] dark:text-white tracking-tight leading-[1.12]">
+            A Brighter <br />
+            Tomorrow <br />
+            <span className="text-blue-600 dark:text-blue-400">Begins Here</span>
           </h1>
 
-          {/* Subtext */}
-          <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed font-normal max-w-sm sm:max-w-md">
-            A CBSE affiliated school committed to academic excellence, strong values and holistic development.
+          {/* Subtitle */}
+          <p className="text-xs sm:text-sm lg:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-medium max-w-md">
+            Quality education, strong values and a supportive environment for every child to grow and succeed.
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-1">
-            {/* Primary Enquire Button */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={onOpenEnquire}
-              className="inline-flex items-center justify-center space-x-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#1652d9] hover:bg-blue-700 active:scale-95 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-700/25 transition cursor-pointer"
+              className="inline-flex items-center justify-center space-x-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#1652d9] hover:bg-blue-700 active:scale-95 text-white text-xs sm:text-sm font-bold shadow-lg shadow-blue-700/25 transition cursor-pointer"
             >
-              <span>Enquire Now</span>
+              <span>Explore Our School</span>
               <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
 
-            {/* Watch Video Button */}
             <button
               onClick={onOpenVideo}
-              className="inline-flex items-center justify-center space-x-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-white hover:bg-slate-50 active:scale-95 text-slate-800 text-xs sm:text-sm font-bold border border-slate-200/80 shadow-2xs transition cursor-pointer"
+              className="inline-flex items-center justify-center space-x-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-white/95 dark:bg-slate-900/90 hover:bg-white dark:hover:bg-slate-900 active:scale-95 text-slate-800 dark:text-slate-100 text-xs sm:text-sm font-bold border border-slate-200/80 dark:border-slate-700 shadow-sm transition cursor-pointer backdrop-blur-xs"
             >
               <div className="w-5 h-5 rounded-full bg-[#1652d9] flex items-center justify-center text-white">
                 <Play className="w-2.5 h-2.5 fill-white ml-0.5" />
@@ -62,81 +93,22 @@ export default function HeroSection({ onOpenEnquire, onOpenVideo }) {
               <span>Watch Video</span>
             </button>
           </div>
+
         </div>
 
-        {/* Integrated Background School Building & Smiling Students */}
-        <div className="absolute inset-x-0 bottom-0 z-10 flex justify-center items-end pointer-events-none">
-          <img
-            src="/hero-students.png"
-            alt="Malviya Public School Campus & Students"
-            className="w-full max-w-2xl lg:max-w-4xl h-auto object-contain object-bottom select-none drop-shadow-md"
-            style={{
-              maxHeight: '400px',
-            }}
-          />
-        </div>
-
-      </div>
-
-      {/* 2. Floating Stats Bar (Overlapping underneath the hero card) */}
-      <div className="relative -mt-10 sm:-mt-12 z-30 px-2 sm:px-6">
-        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-[0_12px_35px_-8px_rgba(0,0,0,0.1)] border border-slate-100 p-3 sm:p-5">
-          <div className="grid grid-cols-4 gap-2 sm:gap-4 text-center">
-            
-            {/* Metric 1 */}
-            <div className="flex flex-col items-center justify-center p-1 sm:p-2">
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-1 sm:mb-2 shadow-2xs">
-                <Users className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
-              </div>
-              <span className="text-sm sm:text-xl lg:text-2xl font-black text-slate-900 leading-tight">
-                <NumberTicker value={1000} suffix="+" duration={1800} />
-              </span>
-              <span className="text-[9px] sm:text-xs text-slate-500 font-semibold mt-0.5 leading-tight">
-                Happy Students
-              </span>
-            </div>
-
-            {/* Metric 2 */}
-            <div className="flex flex-col items-center justify-center p-1 sm:p-2">
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center mb-1 sm:mb-2 shadow-2xs">
-                <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
-              </div>
-              <span className="text-sm sm:text-xl lg:text-2xl font-black text-slate-900 leading-tight">
-                <NumberTicker value={50} suffix="+" duration={1800} />
-              </span>
-              <span className="text-[9px] sm:text-xs text-slate-500 font-semibold mt-0.5 leading-tight">
-                Expert Faculty
-              </span>
-            </div>
-
-            {/* Metric 3 */}
-            <div className="flex flex-col items-center justify-center p-1 sm:p-2">
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1 sm:mb-2 shadow-2xs">
-                <Award className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
-              </div>
-              <span className="text-sm sm:text-xl lg:text-2xl font-black text-slate-900 leading-tight">
-                CBSE
-              </span>
-              <span className="text-[9px] sm:text-xs text-slate-500 font-semibold mt-0.5 leading-tight">
-                Affiliated
-              </span>
-            </div>
-
-            {/* Metric 4 */}
-            <div className="flex flex-col items-center justify-center p-1 sm:p-2">
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-1 sm:mb-2 shadow-2xs">
-                <Star className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
-              </div>
-              <span className="text-sm sm:text-xl lg:text-2xl font-black text-slate-900 leading-tight">
-                <NumberTicker value={25} suffix="+" duration={1800} />
-              </span>
-              <span className="text-[9px] sm:text-xs text-slate-500 font-semibold mt-0.5 leading-tight">
-                Years of Trust
-              </span>
-            </div>
-
+        {/* Bottom Slide Counter: ‹ 1/3 › */}
+        <div className="relative z-10 flex justify-end items-center">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-white text-xs font-semibold border border-white/20">
+            <button onClick={prevSlide} className="hover:text-blue-300 transition cursor-pointer p-0.5" aria-label="Previous slide">
+              <ChevronLeft className="w-3.5 h-3.5" />
+            </button>
+            <span className="text-[11px] font-mono tracking-wider">{activeSlide}/{totalSlides}</span>
+            <button onClick={nextSlide} className="hover:text-blue-300 transition cursor-pointer p-0.5" aria-label="Next slide">
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
+
       </div>
 
     </section>

@@ -5,11 +5,14 @@ import FloatingDock from './components/layout/FloatingDock';
 import NavigationDrawer from './components/layout/NavigationDrawer';
 
 import HeroSection from './components/hero/HeroSection';
-import QuickActionGrid from './components/quickActions/QuickActionGrid';
 import WhyChooseUs from './components/whyChooseUs/WhyChooseUs';
+import StatsCard from './components/hero/StatsCard';
+import AdmissionsBanner from './components/admissions/AdmissionsBanner';
+import QuickActionGrid from './components/quickActions/QuickActionGrid';
+import KalamQuoteCard from './components/common/KalamQuoteCard';
+
 import PrincipalMessage from './components/principal/PrincipalMessage';
 import AcademicsCarousel from './components/academics/AcademicsCarousel';
-import AdmissionsBanner from './components/admissions/AdmissionsBanner';
 import CampusLifeSection from './components/campusLife/CampusLifeSection';
 import NewsSection from './components/news/NewsSection';
 import VideoBannerSection from './components/videoBanner/VideoBannerSection';
@@ -37,10 +40,13 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
+    const root = document.documentElement;
     if (darkMode) {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
+      root.removeAttribute('data-theme');
     }
   }, [darkMode]);
 
@@ -48,7 +54,7 @@ export default function App() {
     setDarkMode(prev => !prev);
   };
 
-  // Dedicated Page Modal for Sidebar Options (About, Academics, Admissions, Campus Life, Gallery, News, Contact)
+  // Dedicated Page Modal for Sidebar Options
   const [activePageId, setActivePageId] = useState(null);
 
   // Modal Visibility States
@@ -91,28 +97,21 @@ export default function App() {
 
   const handleQuickAction = (actionId) => {
     switch (actionId) {
+      case 'about':
+        setActivePageId('about');
+        break;
       case 'academics':
         setActivePageId('academics');
         break;
       case 'admissions':
         setIsAdmissionOpen(true);
         break;
-      case 'student-life':
-        setActivePageId('campus-life');
+      case 'fees':
+        setIsEnquireOpen(true);
         break;
-      case 'safety':
-        setDetailModalData({
-          title: 'Campus Safety & Transport',
-          tag: 'Safety Measures',
-          description: 'A 100% secure campus monitored 24x7 with high-definition CCTV surveillance, security checkpoints, female attendants in all school buses with GPS tracking, and an on-campus medical infirmary.',
-          features: [
-            '24/7 CCTV surveillance throughout campus',
-            'GPS-tracked school buses with emergency panic buttons',
-            'Trained security personnel & mandatory visitor verification',
-            'First aid medical room with qualified resident nursing staff'
-          ],
-          actionText: 'Contact Safety Desk'
-        });
+      case 'student-life':
+      case 'campus-life':
+        setActivePageId('campus-life');
         break;
       case 'gallery':
         setActivePageId('gallery');
@@ -173,9 +172,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 flex flex-col antialiased selection:bg-blue-600 selection:text-white transition-colors">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col antialiased selection:bg-blue-600 selection:text-white transition-colors duration-300">
       
-      {/* Header with Marquee, Apply Now, and Theme Switcher */}
+      {/* 1. Header with News Marquee, Apply Now & Dark Mode Switcher */}
       <Header
         schoolName={activeSchoolName}
         tagline={schoolConfig.tagline}
@@ -188,44 +187,50 @@ export default function App() {
         onNavigate={handleNavigate}
       />
 
-      {/* Main Content Sections */}
+      {/* Main Content Flow */}
       <main className="flex-1 w-full pb-20">
         
-        {/* 1. Hero Section with Exact Phone Reference Look */}
+        {/* 2. Hero Section with Background Photo & Overlaid Content */}
         <HeroSection
           onOpenEnquire={() => setIsEnquireOpen(true)}
           onOpenVideo={() => setIsVideoOpen(true)}
         />
 
-        {/* 2. 8 Quick Action Tiles Grid */}
-        <QuickActionGrid onActionClick={handleQuickAction} />
-
-        {/* 3. Why Choose Us? 4 Pillars */}
+        {/* 3. 4 Core Pillars Grid (Academic Excellence, Holistic, Safe, Co-Curricular) */}
         <WhyChooseUs />
 
-        {/* 4. Message from the Principal */}
-        <PrincipalMessage
-          schoolName={activeSchoolName}
-          onOpenReadMore={() => setIsPrincipalOpen(true)}
-        />
+        {/* 4. Deep Royal Blue Stats Banner (1000+, 50+, 100%, 25+) */}
+        <StatsCard />
 
-        {/* 5. Academics Levels Grid */}
-        <AcademicsCarousel onSelectStage={handleSelectAcademicStage} />
-
-        {/* 6. Admissions Open Banner */}
+        {/* 5. Admissions Open 2026–27 Banner */}
         <AdmissionsBanner
           onOpenAdmission={() => setIsAdmissionOpen(true)}
           onOpenBrochure={() => setIsBrochureOpen(true)}
         />
 
-        {/* 7. Campus Life */}
+        {/* 6. Quick Access 8-Tile Grid with View All */}
+        <QuickActionGrid onActionClick={handleQuickAction} />
+
+        {/* 7. Dr. A.P.J. Abdul Kalam Inspirational Quote Card */}
+        <KalamQuoteCard />
+
+        {/* 8. Message from the Principal */}
+        <PrincipalMessage
+          schoolName={activeSchoolName}
+          onOpenReadMore={() => setIsPrincipalOpen(true)}
+        />
+
+        {/* 9. Academics Levels (Pre-Primary to 12) */}
+        <AcademicsCarousel onSelectStage={handleSelectAcademicStage} />
+
+        {/* 10. Campus Life & Activities */}
         <CampusLifeSection
           onExploreStudentLife={() => setActivePageId('campus-life')}
           onSelectActivity={handleSelectCampusActivity}
         />
 
-        {/* 8. Combined Section: News & Announcements + Video Showcase Banner */}
-        <section className="py-12 sm:py-16 bg-slate-50/70 dark:bg-slate-950/40 border-y border-slate-100 dark:border-slate-800" id="news-and-video">
+        {/* 11. News & Announcements + Video Showcase Banner */}
+        <section className="py-12 sm:py-16 bg-slate-50/70 dark:bg-slate-900/40 border-y border-slate-100 dark:border-slate-800" id="news-and-video">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
               <div className="lg:col-span-6">
@@ -241,11 +246,11 @@ export default function App() {
           </div>
         </section>
 
-        {/* 9. Parent Testimonials */}
+        {/* 12. Parent Testimonials */}
         <TestimonialsCarousel schoolName={activeSchoolName} />
 
-        {/* 10. Virtual Campus Tour + Our Location */}
-        <section className="py-12 sm:py-16 bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800" id="location-and-tour">
+        {/* 13. Virtual Campus Tour & Location Directions */}
+        <section className="py-12 sm:py-16 bg-white dark:bg-slate-950 border-y border-slate-100 dark:border-slate-800" id="location-and-tour">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
               <div className="lg:col-span-6">
@@ -258,20 +263,20 @@ export default function App() {
           </div>
         </section>
 
-        {/* 11. Stay Connected Newsletter */}
+        {/* 14. Stay Connected Newsletter */}
         <NewsletterSection />
       </main>
 
-      {/* 12. Footer (Clean Light Mode with social links) */}
+      {/* 15. Light Mode Footer with Social Links */}
       <Footer schoolName={activeSchoolName} onNavigate={handleNavigate} />
 
-      {/* 13. FLOATING DOCKER */}
+      {/* 16. FLOATING DOCK */}
       <FloatingDock
         onNavigate={handleNavigate}
         onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
       />
 
-      {/* 14. Slide Navigation Drawer (Left-Side with default closed accordions, pages & portal login) */}
+      {/* 17. Navigation Drawer (Left-Side) */}
       <NavigationDrawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
@@ -288,7 +293,7 @@ export default function App() {
         onOpenPage={(pageId) => setActivePageId(pageId)}
       />
 
-      {/* 15. Dedicated Page View Modal for Sidebar Options */}
+      {/* 18. Dedicated Page View Modal for Sidebar Items */}
       <PageModal
         pageId={activePageId}
         onClose={() => setActivePageId(null)}
