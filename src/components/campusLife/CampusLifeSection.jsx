@@ -1,54 +1,54 @@
-import React from 'react';
+﻿import React from 'react';
 import { Trophy, ArrowRight, Sparkles } from 'lucide-react';
 import { campusLifeItems } from '../../data/schoolData';
 
 export default function CampusLifeSection({ onExploreStudentLife, onSelectActivity }) {
   return (
-    <section className="py-16 bg-white" id="campus-life">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-10 sm:py-16 bg-white dark:bg-slate-900 transition-colors" id="campus-life">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
         {/* Title */}
-        <div className="text-center space-y-2 mb-12">
-          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full">
+        <div className="text-center space-y-2 mb-8 sm:mb-12">
+          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-3 py-1 rounded-full">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Beyond Classrooms</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
             Campus Life
           </h3>
-          <p className="text-sm sm:text-base text-slate-500 max-w-lg mx-auto">
+          <p className="text-xs sm:text-base text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
             A vibrant, holistic learning experience where passions are ignited and lifelong friendships form.
           </p>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        {/* 4 Cards Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10">
           {campusLifeItems.map((item) => (
             <div
               key={item.id}
               onClick={() => onSelectActivity(item)}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col group"
+              className="bg-white dark:bg-slate-800/80 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col group"
             >
-              <div className="h-52 w-full relative overflow-hidden bg-slate-100">
+              <div className="h-44 sm:h-52 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-700">
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-slate-800">
+                <div className="absolute top-3 left-3 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-slate-800 dark:text-slate-200">
                   {item.tag}
                 </div>
               </div>
 
-              <div className="p-5 flex-1 flex flex-col justify-between">
+              <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h4 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition leading-tight">
+                  <h4 className="text-base sm:text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition leading-tight">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
-                <div className="pt-4 mt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+                <div className="pt-3.5 mt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs font-bold text-blue-600 dark:text-blue-400">
                   <span>View Details</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
                 </div>
@@ -57,30 +57,20 @@ export default function CampusLifeSection({ onExploreStudentLife, onSelectActivi
           ))}
         </div>
 
-        {/* Nurturing Talent Highlight Card */}
-        <div className="bg-gradient-to-r from-blue-50 via-indigo-50/60 to-amber-50/40 rounded-3xl p-8 sm:p-10 border border-blue-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center space-x-5">
-            <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center shadow-xs flex-shrink-0">
-              <Trophy className="w-8 h-8 stroke-[2.2]" />
-            </div>
-            <div>
-              <h4 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
-                Nurturing Talent, Creating Future Leaders
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl mt-1.5">
-                From sports to performing arts, from science clubs to community service — we provide endless opportunities for every child to discover their passion.
-              </p>
-            </div>
+        {/* Highlight Card */}
+        <div className="rounded-3xl bg-gradient-to-r from-blue-900 to-indigo-900 p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+          <div className="space-y-1 text-center sm:text-left">
+            <h4 className="text-lg sm:text-xl font-bold">Interested in exploring our campus activities?</h4>
+            <p className="text-xs sm:text-sm text-blue-200">Discover clubs, athletics, robotics labs, and creative arts.</p>
           </div>
-
           <button
             onClick={onExploreStudentLife}
-            className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-700/20 active:scale-95 transition cursor-pointer flex-shrink-0"
+            className="px-6 py-3 rounded-full bg-white text-blue-950 font-bold text-xs sm:text-sm hover:bg-blue-50 active:scale-95 transition cursor-pointer w-full sm:w-auto shadow-md"
           >
-            <span>Explore Student Life</span>
-            <ArrowRight className="w-4 h-4" />
+            Explore Student Life →
           </button>
         </div>
+
       </div>
     </section>
   );

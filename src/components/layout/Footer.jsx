@@ -9,8 +9,8 @@ export default function Footer({ schoolName, onNavigate }) {
   };
 
   return (
-    <footer className="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 pt-14 pb-20 border-t border-slate-200/90 dark:border-slate-800 transition-colors relative">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+    <footer className="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 pt-10 sm:pt-14 pb-28 sm:pb-20 border-t border-slate-200/90 dark:border-slate-800 transition-colors relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-slate-200 dark:border-slate-800">

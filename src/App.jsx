@@ -188,7 +188,7 @@ export default function App() {
       />
 
       {/* Main Content Flow */}
-      <main className="flex-1 w-full pb-20">
+      <main className="flex-1 w-full pb-28 sm:pb-32 overflow-x-hidden">
         
         {/* 2. Hero Section with Background Photo & Overlaid Content */}
         <HeroSection

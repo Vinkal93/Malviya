@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { GraduationCap, Users, ShieldCheck, Trophy } from 'lucide-react';
 
 export default function WhyChooseUs() {
@@ -30,19 +30,19 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="px-3 sm:px-6 py-4 max-w-7xl mx-auto" id="about">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+    <section className="px-2.5 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto w-full" id="about">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
         {pillars.map((item) => {
           const Icon = item.icon;
           return (
             <div
               key={item.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-slate-100 dark:border-slate-800 shadow-2xs hover:shadow-md transition-all flex flex-col items-center text-center justify-center cursor-pointer group"
+              className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 border border-slate-100 dark:border-slate-800 shadow-2xs hover:shadow-md transition-all flex flex-col items-center text-center justify-center cursor-pointer group"
             >
-              <div className={`w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center mb-3 group-hover:scale-105 transition-transform shadow-2xs`}>
-                <Icon className="w-6 h-6 stroke-[2.2]" />
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl ${item.color} flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-105 transition-transform shadow-2xs flex-shrink-0`}>
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h4 className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100 leading-snug">
+              <h4 className="text-[11px] sm:text-sm font-extrabold text-slate-800 dark:text-slate-100 leading-snug">
                 {item.title}
               </h4>
             </div>
